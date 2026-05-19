@@ -12,3 +12,18 @@ class BiDirectionalPriorityQueue {
     return this.queue.length;
   }
 }
+enqueue(value, priority) {
+  if (
+    priority === undefined ||
+    priority === null ||
+    Number.isNaN(priority)
+  ) {
+    throw new Error("Priority must be valid");
+  }
+
+  this.queue.push({
+    value,
+    priority,
+    id: this.sequence++
+  });
+}
