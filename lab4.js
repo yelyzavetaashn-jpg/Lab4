@@ -11,7 +11,7 @@ class BiDirectionalPriorityQueue {
   size() {
     return this.queue.length;
   }
-}
+
 enqueue(value, priority) {
   if (
     priority === undefined ||
@@ -105,3 +105,14 @@ dequeue(mode) {
     ? null
     : this.queue.splice(index, 1)[0];
 }
+}
+const queue = new BiDirectionalPriorityQueue();
+
+queue.enqueue("Task A", 2);
+queue.enqueue("Task B", 5);
+queue.enqueue("Task C", 1);
+queue.enqueue("Task D", 5);
+
+console.log(queue.peek("highest"));
+console.log(queue.dequeue("lowest"));
+console.log(queue.size());
