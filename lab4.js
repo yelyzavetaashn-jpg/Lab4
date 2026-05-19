@@ -98,3 +98,10 @@ peek(mode) {
     ? null
     : this.queue[index];
 }
+dequeue(mode) {
+  const index = this.findElementIndex(mode);
+
+  return index === -1
+    ? null
+    : this.queue.splice(index, 1)[0];
+}
