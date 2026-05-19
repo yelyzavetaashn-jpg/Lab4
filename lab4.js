@@ -91,3 +91,10 @@ findElementIndex(mode) {
 
   return selectedIndex;
 }
+peek(mode) {
+  const index = this.findElementIndex(mode);
+
+  return index === -1
+    ? null
+    : this.queue[index];
+}
