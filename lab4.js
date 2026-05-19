@@ -46,3 +46,48 @@ isLowerPriority(current, selected) {
     )
   );
 }
+findElementIndex(mode) {
+  if (this.isEmpty()) {
+    return -1;
+  }
+
+  let selectedIndex = 0;
+
+  for (let i = 1; i < this.queue.length; i++) {
+    const current = this.queue[i];
+    const selected = this.queue[selectedIndex];
+
+    switch (mode) {
+      case "highest":
+        if (this.isHigherPriority(current, selected)) {
+          selectedIndex = i;
+        }
+        break;
+
+      case "lowest":
+        if (this.isLowerPriority(current, selected)) {
+          selectedIndex = i;
+        }
+        break;
+
+      case "oldest":
+        if (current.id < selected.id) {
+          selectedIndex = i;
+        }
+        break;
+
+      case "newest":
+        if (current.id > selected.id) {
+          selectedIndex = i;
+        }
+        break;
+
+      default:
+        throw new Error(
+          "Invalid mode"
+        );
+    }
+  }
+
+  return selectedIndex;
+}
