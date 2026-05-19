@@ -27,3 +27,22 @@ enqueue(value, priority) {
     id: this.sequence++
   });
 }
+isHigherPriority(current, selected) {
+  return (
+    current.priority > selected.priority ||
+    (
+      current.priority === selected.priority &&
+      current.id < selected.id
+    )
+  );
+}
+
+isLowerPriority(current, selected) {
+  return (
+    current.priority < selected.priority ||
+    (
+      current.priority === selected.priority &&
+      current.id < selected.id
+    )
+  );
+}
